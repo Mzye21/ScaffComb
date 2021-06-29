@@ -15,7 +15,7 @@ This repository contains the source codes, the example data and some analysis co
 * scikit-learn 0.21.2
 * matplotlib 3.1.1
 
-## Usage
+## Demos
 ### Training GSG
     > from GSG import AttnDGenerator
     > dt_L1000 = pickle.load(open('data/data_GSG_input_train_example.pkl','rb'))
@@ -30,8 +30,10 @@ This repository contains the source codes, the example data and some analysis co
                                device=device, path='rst/GSG_trained/')
     > Trainer1.load_model('rst/GSG_pretrained/', 999)
     > Trainer1.train(1000)
+    
 ### Generate scaffolds with GSG
     > scaf = Trainer1.G_sample(gene = gene)
+    
 ### Train DSP
     > from DSP import trainer
     > X, Y = pickle.load(open('data/data_DSP_input_example.pkl', 'rb'))
@@ -48,8 +50,10 @@ This repository contains the source codes, the example data and some analysis co
                         path = 'rst/DSP_trained/model')
     > Trainer3.load_model()
     > Trainer3.one_fold_train(500)
+    
 ### Predict SS with DSP
-    > Trainer3.predict([X1, X2, X3])
+    > y_pred = Trainer3.predict([X1, X2, X3])
+    
 ### Train SDSP
     > from SDSP import trainer
     > tokens = pickle.load(open('data/tokens.pkl','rb'))
@@ -60,7 +64,9 @@ This repository contains the source codes, the example data and some analysis co
                         batch_size = 512, lr = 0.0001,
                         device=device, path='rst/SDSP_trained/model')
     > Trainer4.train(500)
+    
 ### Predict SS with SDSP
-    > 
+    > from SDSP import SDSP_predict
+    > y_pred, y_pred_rev = SDSP_predict(Trainer4, dt)
 
 ## Citation
