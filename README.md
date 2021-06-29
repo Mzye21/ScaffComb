@@ -16,6 +16,18 @@ This repository contains the source codes, the example data and some analysis co
 * matplotlib 3.1.1
 
 ## Usage
-On going...
-
+### Training GSG
+    > from GSG import AttnDGenerator
+    > dt_L1000 = pickle.load(open('data/data_GSG_input_train_example.pkl','rb'))
+    > dt_chembl = pickle.load(open('data/data_GSG_input_pretrain_example.pkl', 'rb'))
+    > tokens = pickle.load(open('data/tokens.pkl','rb'))
+    > # Pre-training with chembl scaffolds
+    > Trainer0 = AttnDGenerator(tokens, dt_chembl, batch_size=128, lr = 0.0001,
+                               device=device, path='rst/pretrained/')
+    > Trainer0.train(1000)
+    > # Train with L1000 scaffolds
+    > Trainer1 = AttnDGenerator(tokens, dt_L1000, batch_size=128, lr = 0.0001,
+                               device=device, path='rst/trained/')
+    > Trainer1.load_model('rst/pretrained/', 999)
+    > Trainer1.train(1000)
 ## Citation
