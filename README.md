@@ -7,6 +7,7 @@ This repository contains the source codes, the example data and some analysis co
 ## Dependences
 * python 3.6.8
 * tensorflow-gpu 1.12.0
+* tensorboardx 2.0
 * pytorch 1.3.1
 * numpy 1.17.0
 * rdkit 2020.03.1b1.0
